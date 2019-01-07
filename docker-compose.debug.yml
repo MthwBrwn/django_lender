@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  django_lender:
+    image: django_lender
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
