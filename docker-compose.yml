@@ -9,6 +9,7 @@ services:
     web:
         env_file: .env
         build: .
+        command: /src/entrypoint.sh
         volumes:
             - .:/src
         ports:
