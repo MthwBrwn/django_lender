@@ -1,21 +1,20 @@
-# math_series
+# Django Lender
 
 **Author**: Matthew Brown
 **Version**: 1.0.0
 
 ## Overview
-This application sets up a sequence that gives a Fibonacci number for a input number.
+This application explores the use of Django and docker
 
 ## Getting Started
-To get started you will need to install pipenv, bring up an active environment with "pipenv shell" and then call this file
+To get started you will need to install the dependencies in the piplock file and set up your own .env file
 
 ## Architecture
 This application is written in Python3.6
+This project utilizes Django as a framework and Docker to create containers
 
 
 
 ## Change Log
 
-10:13 finished with test conditions for fibonacci. starting with lucas feature
-10:39 Lucas feature tests complete and function set up
-11:20 added testing conditions for optional input and had conditions pass
+7 JAN 2019 - Began work on application
