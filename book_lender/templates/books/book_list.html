@@ -6,9 +6,9 @@ List
 
 {% block content %}
 <div class="book_list">
-  gibberish
+
 {% for book in books %}
-  <h2> <a href="{%url 'book_detail' pk=book.id %}"> {{book.title}} {{book.status}} </a></h2>
+  <h2> <a href="{%url 'book_detail' pk=book.id %}"> {{book.title}}  </a>  Status:   {{book.status}}</h2>
 {% endfor %}
 </div>
 {% endblock content %}
