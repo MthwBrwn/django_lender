@@ -19,9 +19,9 @@ class Book(models.Model):
     def __repr__(self):
         """
         """
-        pass
+        return f'{self.title}, {self.author}, {self.year}, {self.status} '
 
     def __str__(self):
         """
         """
-        pass
+        return f'{self.title}, {self.author}, {self.year}, {self.status} '
