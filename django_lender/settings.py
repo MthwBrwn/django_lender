@@ -109,6 +109,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 ACCOUNT_ACTIVATION_DAYS = 7
+# if DEBUG:
+#     /EMAIL_BACKEND ='django.core.mail.backends'
+
+LOGIN_REDIRECT_URL = '/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/

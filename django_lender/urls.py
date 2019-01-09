@@ -23,6 +23,6 @@ urlpatterns = [
     path('', home_view, name='home'),
     path('books/', include('book_lender.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    # url(r'^accounts/', include('django_registration.backends.activation.urls')),
-    # url(r'^accounts/', include('django.contrib.auth.urls')),
+    # path(r'^accounts/', include('django_registration.backends.activation.urls')),
+    # path(r'^accounts/', include('django.contrib.auth.urls')),
 ]

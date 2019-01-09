@@ -1,5 +1,6 @@
-from django.test import TestCase
+from django.test import TestCase, RequestFactory
 from .models import Book
+from django.contrib.auth.models import User
 
 
 class TestBookModel(TestCase):
@@ -22,18 +23,33 @@ class TestBookModel(TestCase):
         """This test checks that the author is properly stored
         """
         authors = Book.objects.all()
-        self.assertEqual(authors[2], "testAuthor3")
+        self.assertEqual(authors[2].author, "testAuthor3")
 
     def test_book_year(self):
         """ This test checks that the year is correct
         """
-        one = Book.object.get(title='TestBook1')
+        one = Book.objects.get(title='TestBook1')
         self.assertEqual(one.year, "1999")
 
     def test_book_default_status(self):
         """ This checks that the status is defaulted to checked in
         """
-        one = Book.object.get(title='TestBook1')
+        one = Book.objects.get(title='TestBook1')
         self.assertEqual(one.status, "checked_in")
 
 
+class TestBooksViews(TestCase):
+    """ this establishes a class in which to test context in the views
+    """
+    def setUp(self):
+        self.request = RequestFactory()
+
+        Book.objects.create(title='TestBook1', author='testAuthor1', year='1999')
+        Book.objects.create(title='TestBook2', author='testAuthor2', year='1998')
+        Book.objects.create(title='TestBook3', author='testAuthor3', year='1997')
+
+    def test_book_list_view(self):
+        from .views import book_list_view
+        request = self.request.get('')
+        response = book_list_view(request)
+        self.assertIn(b'TestBook1', response.content)
