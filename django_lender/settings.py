@@ -112,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ACCOUNT_ACTIVATION_DAYS = 7
 
 if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.emailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOGIN_REDIRECT_URL = '/'
 
