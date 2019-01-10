@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_registration',
 ]
 
 MIDDLEWARE = [
@@ -109,8 +110,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 ACCOUNT_ACTIVATION_DAYS = 7
-# if DEBUG:
-#     /EMAIL_BACKEND ='django.core.mail.backends'
+
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.emailBackend'
 
 LOGIN_REDIRECT_URL = '/'
 
