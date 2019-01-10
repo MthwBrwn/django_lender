@@ -9,9 +9,10 @@ class TestBookModel(TestCase):
     def setUp(self):
         """ This is he set up for each one of the tests for the Book model
         """
-        Book.objects.create(title='TestBook1', author='testAuthor1', year='1999')
-        Book.objects.create(title='TestBook2', author='testAuthor2', year='1998')
-        Book.objects.create(title='TestBook3', author='testAuthor3', year='1997')
+        user = User.objects.create_user('tester', 'tester@tests.com', 'P@ssword!')
+        Book.objects.create(title='TestBook1', author='testAuthor1', year='1999', user=user)
+        Book.objects.create(title='TestBook2', author='testAuthor2', year='1998', user=user)
+        Book.objects.create(title='TestBook3', author='testAuthor3', year='1997', user=user)
 
     def test_book_titles(self):
         """This test checks to make sure the model properly stores the title in the DB
@@ -45,10 +46,11 @@ class TestBooksViews(TestCase):
         """This sets up the objects of our test DB
         """
         self.request = RequestFactory()
+        user = User.objects.create_user('tester', 'tester@tests.com', 'P@ssword!')
 
-        self.book = Book.objects.create(title='TestBook1', author='testAuthor1', year='1999')
-        Book.objects.create(title='TestBook2', author='testAuthor2', year='1998')
-        Book.objects.create(title='TestBook3', author='testAuthor3', year='1997')
+        self.book = Book.objects.create(title='TestBook1', author='testAuthor1', year='1999', user=user)
+        Book.objects.create(title='TestBook2', author='testAuthor2', year='1998', user=user)
+        Book.objects.create(title='TestBook3', author='testAuthor3', year='1997', user=user)
 
     def test_book_list_view_context(self):
         """ This tests the vew context and makes sure the byte data is the same

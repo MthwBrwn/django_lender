@@ -13,6 +13,7 @@ def book_list_view(request):
     return render(request, 'books/book_list.html', context)
 
 
+@login_required
 def book_detail_view(request, pk=None):
     """ This handles the request/response to the the Database and collects one specified object
     """
