@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 
 
 class TestBookModel(TestCase):
-    """
-    """
+    """ This is a class based test which allows for the build up
+    and tear down of a test database  """
     def setUp(self):
-        """ This is he set up for each one of the tests
+        """ This is he set up for each one of the tests for the Book model
         """
         Book.objects.create(title='TestBook1', author='testAuthor1', year='1999')
         Book.objects.create(title='TestBook2', author='testAuthor2', year='1998')
@@ -42,6 +42,8 @@ class TestBooksViews(TestCase):
     """ this establishes a class in which to test context in the views
     """
     def setUp(self):
+        """This sets up the objects of our test DB
+        """
         self.request = RequestFactory()
 
         self.book = Book.objects.create(title='TestBook1', author='testAuthor1', year='1999')
@@ -49,7 +51,7 @@ class TestBooksViews(TestCase):
         Book.objects.create(title='TestBook3', author='testAuthor3', year='1997')
 
     def test_book_list_view_context(self):
-        """
+        """ This tests the vew context and makes sure the byte data is the same
         """
         from .views import book_list_view
         request = self.request.get('')
@@ -57,7 +59,7 @@ class TestBooksViews(TestCase):
         self.assertIn(b'TestBook1', response.content)
 
     def test_book_list_view_status(self):
-        """
+        """ This tests the response for the book list view request
         """
         from .views import book_list_view
         request = self.request.get('')
@@ -65,7 +67,7 @@ class TestBooksViews(TestCase):
         self.assertEqual(200, response.status_code)
 
     def test_book_detail_view_context(self):
-        """
+        """ This tests the response for the book list detail request
         """
         from .views import book_detail_view
         request = self.request.get('')
@@ -73,7 +75,7 @@ class TestBooksViews(TestCase):
         self.assertIn(b'TestBook1', response.content)
 
     def test_book_detail_view_failure(self):
-        """
+        """ This makes sure that failures are being handled properly
         """
         from .views import book_detail_view
         from django.http import Http404

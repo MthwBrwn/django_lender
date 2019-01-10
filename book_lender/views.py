@@ -3,7 +3,7 @@ from .models import Book
 
 # @login_required
 def book_list_view(request):
-    """
+    """ This handles the request/response to the the Database and collects all the objects
     """
     context = {
         'books': get_list_or_404(Book)
@@ -12,7 +12,7 @@ def book_list_view(request):
 
 
 def book_detail_view(request, pk=None):
-    """
+    """ This handles the request/response to the the Database and collects one specified object
     """
     context = {
         'book': get_object_or_404(Book, id=pk)
