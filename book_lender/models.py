@@ -5,7 +5,7 @@ from django.utils import timezone
 class Book(models.Model):
     """ This is the class Book which is the model for our book object
     """
-    cover_image = models.ImageField(upload_to='static', default='img.png')
+    cover_image = models.ImageField(upload_to='media', default='img.png')
     title = models.CharField(max_length=256)
     author = models.CharField(max_length=256)
     year = models.CharField(max_length=4)
