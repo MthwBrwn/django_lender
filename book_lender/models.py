@@ -5,6 +5,7 @@ from django.utils import timezone
 class Book(models.Model):
     """ This is the class Book which is the model for our book object
     """
+    # user = models.ForeignKey(User, on_delete=models.CASCADE, )
     cover_image = models.ImageField(upload_to='media', default='img.png')
     title = models.CharField(max_length=256)
     author = models.CharField(max_length=256)

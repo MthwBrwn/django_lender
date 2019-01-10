@@ -11,7 +11,17 @@
     <nav>
       <ul>
         <li><a href="{% url 'home' %}">Home</a></li>
+        {% if user.is_authenticated  %}
+
+
         <li><a href="{% url 'book_list' %}"> Books </a></li>
+        {% if user.is_superuser  %}
+        <li><a href="{% url 'admin:index' %}">Admin</a></li>
+        {% endif %}
+        <li><a href="{% url 'logout' %}"> Log Out </a></li>
+        {% else %}
+        <li><a href="{% url 'django_registration_register' %}"> Sign Up  </a></li>
+        {% endif %}
       </ul>
     </nav>
   </header>

@@ -1,0 +1,16 @@
+{% extends "generic/base.html" %}
+
+{% block content %}
+
+<div class=registration_form_container >
+  <h2>
+    You can register Here!
+  </h2>
+  <form method="post" >
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Register"/>
+  </form>
+</div>
+
+{%endblock content%}
