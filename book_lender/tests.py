@@ -46,17 +46,17 @@ class TestBooksViews(TestCase):
         """This sets up the objects of our test DB
         """
         self.request = RequestFactory()
-        user = User.objects.create_user('tester', 'tester@tests.com', 'P@ssword!')
-
-        self.book = Book.objects.create(title='TestBook1', author='testAuthor1', year='1999', user=user)
-        Book.objects.create(title='TestBook2', author='testAuthor2', year='1998', user=user)
-        Book.objects.create(title='TestBook3', author='testAuthor3', year='1997', user=user)
+        self.user = User.objects.create_user('tester', 'tester@tests.com', 'P@ssword!')
+        self.book = Book.objects.create(title='TestBook1', author='testAuthor1', year='1999', user=self.user)
+        Book.objects.create(title='TestBook2', author='testAuthor2', year='1998', user=self.user)
+        Book.objects.create(title='TestBook3', author='testAuthor3', year='1997', user=self.user)
 
     def test_book_list_view_context(self):
         """ This tests the vew context and makes sure the byte data is the same
         """
         from .views import book_list_view
         request = self.request.get('')
+        request.user = self.user
         response = book_list_view(request)
         self.assertIn(b'TestBook1', response.content)
 
@@ -65,6 +65,7 @@ class TestBooksViews(TestCase):
         """
         from .views import book_list_view
         request = self.request.get('')
+        request.user = self.user
         response = book_list_view(request)
         self.assertEqual(200, response.status_code)
 
@@ -73,6 +74,7 @@ class TestBooksViews(TestCase):
         """
         from .views import book_detail_view
         request = self.request.get('')
+        request.user = self.user
         response = book_detail_view(request, self.book.id)
         self.assertIn(b'TestBook1', response.content)
 
@@ -82,5 +84,6 @@ class TestBooksViews(TestCase):
         from .views import book_detail_view
         from django.http import Http404
         request = self.request.get('')
+        request.user = self.user
         with self.assertRaises(Http404):
             book_detail_view(request, '0')

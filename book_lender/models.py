@@ -1,15 +1,19 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class Book(models.Model):
     """ This is the class Book which is the model for our book object
     """
-    # user = models.ForeignKey(User, on_delete=models.CASCADE, )
+    user = models.ForeignKey(User, on_delete=models.CASCADE, )
     cover_image = models.ImageField(upload_to='media', default='img.png')
     title = models.CharField(max_length=256)
     author = models.CharField(max_length=256)
-    year = models.CharField(max_length=4)
+
+    YEARS = [(str(i), str(i)) for i in range(1454, 2019)]
+    year = models.CharField(max_length=5, choices=YEARS)
+
     STATES = [
         ('checked_in', 'Checked In'),
         ('checked_out', 'Checked Out'),
