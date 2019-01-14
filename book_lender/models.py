@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.dispatch import receiver
 from django.contrib.auth.models import User
 
 
@@ -31,3 +32,12 @@ class Book(models.Model):
         """ str gives back basic information about the class objects
         """
         return f'{self.title}, {self.author}, {self.year}, {self.status} '
+
+
+@receiver(models.signals.post_save, sender=Book)
+def set_note_completed_date(sender, instance, **kwargs):
+    """
+    """
+    if instance.status == 'Checked Out' and not instance.last_borrowed:
+        instance.last_borrowed = timezone.now
+        instance.save()
