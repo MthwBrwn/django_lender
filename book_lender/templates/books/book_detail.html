@@ -1,4 +1,6 @@
 {% extends "generic/base.html" %}
+{% load cust_filter%}
+{% load tz%}
 
 {% block title %}
 Detail
@@ -14,6 +16,7 @@ Detail
   <h3> {{book.year}} </h3>
   <h3> {{book.status}} </h3>
   <h3> {{book.date_added}} </h3>
+  <h3> last changed {{book.last_borrowed|get_date_string}}</h3>
 
 </div>
 {% endblock content %}
