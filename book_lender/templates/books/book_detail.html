@@ -14,9 +14,9 @@ Detail
   <p> </p>
   <h3> {{book.author}} </h3>
   <h3> {{book.year}} </h3>
-  <h3> {{book.status}} </h3>
-  <h3> {{book.date_added}} </h3>
-  <h3> last changed {{book.last_borrowed|get_date_string}}</h3>
+  <h3> {{book.get_status_display}} </h3>
+  <h3> Book added to collection: {{book.date_added}} </h3>
+  <h3> Status last changed {{book.last_borrowed|get_date_string}}</h3>
 
 </div>
 {% endblock content %}

@@ -36,7 +36,7 @@ class Book(models.Model):
 
 @receiver(models.signals.post_save, sender=Book)
 def set_note_completed_date(sender, instance, **kwargs):
-    """
+    """This sets the checked out date when the status is changed from checked in to checked out
     """
     if instance.status == 'Checked Out' and not instance.last_borrowed:
         instance.last_borrowed = timezone.now
