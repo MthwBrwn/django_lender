@@ -1,0 +1,26 @@
+
+.main_nav a {
+    font-size: 35px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+nav li {
+    display: inline-block;
+    padding: 5%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2em
+}
+
+body {color: brown}
+
+
+
+
+
+
+
+
+
+
+
